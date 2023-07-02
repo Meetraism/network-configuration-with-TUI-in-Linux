@@ -1,49 +1,141 @@
 #!/bin/bash
-source show_menu_func.sh
+source showMenu.sh 
+source ./generalConf/changeHostname_func.sh
+
+# ============ OPTIONS =============
+
+# phase 1 
 
 # options: main menu
 
 mainMenu_options=(
-    "General Configuration" generalConf_func
-    "Firewall Configuration" firewall_func
+    "General Config" general_conf_menu # main menu > general config - phase 1
+    "Firewall Config" firewall_conf_menu
 )
 
-# options: main menu > general configuration
+# options: main menu > general config
 
-generalConf_options=(
-    "Change Hostname" hostname_func
-    "Change DNS" dns_func
-    "Set IP" ip_func
-    "Add/Del Route" route_func
+general_main_options=(
+    "Change Hostname" setHostname
+    "Change DNS" setDNS
+    "Set IP" setIP
+    "Add/Del Route" addDelroute
+    "Back" back_func
+    "Exit" exit_func
+    )
+
+# options: main menu > firewall config
+
+firewall_main_options=(
+    "General NFtables Config" generalNFtables_menu
+    "NFtables Wrapper!" NFtablesWrapper_menu
 )
 
+# phase 2 - part 1
+# options: main menu > firewall config > general NFtables config
+
+generalNFtables_options=(
+    "Limit SSH Connections" limitSSH
+    "Flush/Reset the NFtables Ruleset" flushNFtables
+    "Traffic Redirection" trafficRedirect
+    "Disconnecting Internet (Network Isolation)" disconnectInternet
+    "Reject Connections from specific user" rejectUserConnection
+    "Make current configurations Permanent" makePermanent
+    "Back" back_func
+    "Exit" exit_func    
+    )
+NFtablesWrapper_options=(
+    "Create table" createTable
+)
+
+# phase 2 - part 2
+# options: main menu > firewall config > NFtablesWrapper
+
+# ============== ACTIONS ===============
 
 # Define the action functions for each option
 
-generalConf_func() {
-    echo "You chose general"
-    # Add your code here for handling Option 1
+back_func() {
+   echo "back"
 }
 
-firewall_func() {
-    echo "You chose firewall"
-    # Add your code here for handling Option 2
+exit_func() {
+    echo "exit"
 }
 
-hostname_func() {
-    echo "host..."
+# actions: main menu
+
+general_conf_menu() { # main menu > general config (phase 1)
+    show_menu "General Config" "${general_main_options[@]}"
 }
 
-dns_func() {
+firewall_conf_menu() { # main menu > firewall config (phase 1)
+    show_menu "Firewall Config" "${firewall_main_options[@]}"
+}
+
+# actions: main menu > general configuration
+
+setHostname() {
+    changeHostname
+}
+
+setDNS() {
     echo "dns..."
 }
 
-ip_func() {
+setIP() {
     echo "ip..."	
 }
 
-route_func() {
+addDelRoute() {
     echo "route..."
+}
+
+
+# actions: main menu > firewall config
+
+generalNFtables_menu() {
+    show_menu "General NFtables Config" ${generalNFtables_options[@]}
+}
+
+NFtablesWrapper_menu() {
+    show_menu "NFtables Wrapper!" ${NFtablesWrapper_options[@]}
+}
+
+# actions: main menu > firewall config > general config
+
+limitSSH() {
+    echo "limited"
+}
+
+trafficRedirect() {
+    echo "redirect"
+}
+
+disconnectInternet() {
+    echo "disconnect"
+}
+
+rejectUserConnection() {
+    echo "reject"
+}
+
+makePermanent() {
+    echo "permanent"
+}
+
+# actions: main menu > firewall configuration > wrapper
+
+createTable() {
+   echo "table created"
+}
+
+createChain() {
+    echo "chain created"
+}
+
+createRule() {
+    echo "rule created"
 }
 
 show_menu "Main Menu" "${mainMenu_options[@]}"
