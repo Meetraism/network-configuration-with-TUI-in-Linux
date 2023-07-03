@@ -1,6 +1,6 @@
 #!/bin/bash
 source showMenu.sh 
-source ./generalConf/changeHostname_func.sh
+source ./generalConf/changeHostname_func2.sh
 
 # ============ OPTIONS =============
 
@@ -45,7 +45,10 @@ generalNFtables_options=(
     "Exit" exit_func    
     )
 NFtablesWrapper_options=(
-    "Create table" createTable
+    "Create Table" createTable
+    "Create Chain" createChain
+    "Packet Filtering Rules (Limit Access)" packetFilter
+    "NAT Rules" createNatRule
 )
 
 # phase 2 - part 2
@@ -95,11 +98,11 @@ addDelRoute() {
 # actions: main menu > firewall config
 
 generalNFtables_menu() {
-    show_menu "General NFtables Config" ${generalNFtables_options[@]}
+    show_menu "General NFtables Config" "${generalNFtables_options[@]}"
 }
 
 NFtablesWrapper_menu() {
-    show_menu "NFtables Wrapper!" ${NFtablesWrapper_options[@]}
+    show_menu "NFtables Wrapper!" "${NFtablesWrapper_options[@]}"
 }
 
 # actions: main menu > firewall config > general config
@@ -134,8 +137,12 @@ createChain() {
     echo "chain created"
 }
 
-createRule() {
-    echo "rule created"
+packetFilter() {
+    echo "limit access"
+}
+
+createNatRule() {
+    echo "nat..."
 }
 
 show_menu "Main Menu" "${mainMenu_options[@]}"

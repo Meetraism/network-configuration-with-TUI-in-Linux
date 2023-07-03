@@ -18,10 +18,21 @@ show_menu() {
 
     # Handle the chosen option
     if [[ $? -eq 0 ]]; then
-        local index=$((choice*2-1))
-        ${options[$index]}
-	#echo "u choose $choice"
+	local index=$((choice*2-1))
+	"${options[$index]}"
+	#echo "u choose $choice in ${options[$index]}"
     else
-        echo "No option chosen. Exiting."
+	echo "No option/invalid Exiting."
     fi
+}
+
+show_msgbox() {
+	local msg=$1
+	whiptail --msgbox "$msg" 8 40
+}
+
+show_inputbox() {
+	local msgg=$1
+	local usr_input=$(whiptail --inputbox "$msgg" 10 40 "" 3>&1 1>&2 2>&3)
+    echo "$usr_input"
 }
