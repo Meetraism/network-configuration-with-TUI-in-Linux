@@ -1,6 +1,6 @@
 #!/bin/bash
 source showMenu.sh 
-source ./generalConf/changeHostname_func2.sh
+source ./generalConf/changeHostname.sh
 
 # ============ OPTIONS =============
 
