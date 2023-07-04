@@ -22,7 +22,7 @@ show_menu() {
 	"${options[$index]}"
 	#echo "u choose $choice in ${options[$index]}"
     else
-	echo "No option/invalid Exiting."
+	show_msgbox "No option provided! Please Select an option."
     fi
 }
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-source showMenu.sh
+source whiptail_functions.sh
 
 change_hostname() {
 
@@ -9,15 +9,15 @@ new_hostname=$(show_inputbox "Enter the new hostname:")
 # Function to change the hostname temporarily
 change_temp_hostname() {
    # new_hostname=$1
-    hostname "$new_hostname"
+    hostname "$new_hostname" 2>/dev/null >/dev/null
 	show_msgbox "Temporary Hostname successfully changed to $new_hostname!"
 }
 
 # Function to change the hostname permanently
 change_perm_hostname() {
    # new_hostname=$1
-    sudo sed -i "s/$(cat /etc/hostname)/$new_hostname/g" /etc/hostname
-    sudo sed -i "s/$(grep 127.0.0.1 /etc/hosts | awk '{print $2}')/$new_hostname/g" /etc/hosts
+    sed -i "s/$(cat /etc/hostname)/$new_hostname/g" /etc/hostname
+    sed -i "s/$(grep 127.0.0.1 /etc/hosts | awk '{print $2}')/$new_hostname/g" /etc/hosts
     show_msgbox "Permanent Hostname successfully changed to $new_hostname!"
 }
 

@@ -1,7 +1,7 @@
 #!/bin/bash
-source showMenu.sh 
-source ./generalConf/setHostname.sh
-source ./generalConf/setDns.sh
+source whiptail_functions.sh 
+source ./generalConf/set_hostname.sh
+source ./generalConf/set_dns.sh
 
 # ============ OPTIONS =============
 

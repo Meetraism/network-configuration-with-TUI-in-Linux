@@ -1,5 +1,5 @@
 #!/bin/bash
-source showMenu.sh
+source whiptail_functions.sh
 # prompt user for input
 get_user_input() {
     local title="$1"
