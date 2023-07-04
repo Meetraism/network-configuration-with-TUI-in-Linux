@@ -2,6 +2,7 @@
 source whiptail_functions.sh 
 source ./generalConf/set_hostname.sh
 source ./generalConf/set_dns.sh
+source ./generalConf/validation.sh
 
 # ============ OPTIONS =============
 
@@ -134,4 +135,7 @@ createNatRule() {
     echo "nat..."
 }
 
+apt-get install dialog > /dev/null 2>&1
+apt-get install apt-utils > /dev/null 2>&1
+check_install_package "whiptail"
 show_menu "Main Menu" "${mainMenu_options[@]}"

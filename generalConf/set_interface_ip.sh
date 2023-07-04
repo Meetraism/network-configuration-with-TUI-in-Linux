@@ -83,21 +83,3 @@ get_ip_from_user() {
 	subnet_mask=$subnet
 }
 
-# Usage example: assign_permanent_ip eth0
-
-
-	case $choice in
-	1)
-          	assign_temporary_ip
-	;;
-	
-	2)
-		assign_permanent_i
-	;;
-
-    *)
-		echo "Invalid choice. Exiting."
-		exit 1
-	;;
-	esac
-

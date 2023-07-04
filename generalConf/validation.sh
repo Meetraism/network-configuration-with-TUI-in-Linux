@@ -66,7 +66,7 @@ validate_gateway() {
 check_install_package() {
     local package=$1
     if ! dpkg -s "$package" &> /dev/null; then
-        apt-get install -y "$package"
+        apt-get install -y "$package" > /dev/null
         return 1
     fi
 }
