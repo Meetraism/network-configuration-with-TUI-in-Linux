@@ -46,6 +46,7 @@ generalNFtables_options=(
     "Back" back_func
     "Exit" exit_func    
     )
+
 NFtablesWrapper_options=(
     "Create Table" createTable
     "Create Chain" createChain
@@ -135,7 +136,7 @@ createNatRule() {
     echo "nat..."
 }
 
-apt-get install dialog > /dev/null 2>&1
-apt-get install apt-utils > /dev/null 2>&1
-check_install_package "whiptail"
+# apt-get install dialog > /dev/null 2>&1
+# apt-get install apt-utils > /dev/null 2>&1
+
 show_menu "Main Menu" "${mainMenu_options[@]}"
