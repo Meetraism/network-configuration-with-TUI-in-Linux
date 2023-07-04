@@ -1,7 +1,7 @@
 #!/bin/bash
 source showMenu.sh
 
-changeHostname() {
+change_hostname() {
 
 # Display Whiptail input box to get the new hostname
 new_hostname=$(show_inputbox "Enter the new hostname:")
@@ -21,11 +21,11 @@ change_perm_hostname() {
     show_msgbox "Permanent Hostname successfully changed to $new_hostname!"
 }
 
+# change hostname | menu options :
 options_temp_perm=(
 	"Change hostname temporarily" change_temp_hostname 
 	"Change hostname permanently" change_perm_hostname
 )
-
 
 # Check if the user entered a hostname
 # in other words: checks if the length of new_hostname is non-zero

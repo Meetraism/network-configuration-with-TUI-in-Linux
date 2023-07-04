@@ -1,13 +1,11 @@
 #!/bin/bash
-
+source showMenu.sh
 # prompt user for input
 get_user_input() {
     local title="$1"
     local message="$2"
-    local default_value=""
 
-
-    local input=$(whiptail --title "$title" --inputbox "$message" 8 60 "$default_value" 3>&1 1>&2 2>&3)
+    local input=$(whiptail --title "$title" --inputbox "$message" 8 60 "" 3>&1 1>&2 2>&3)
 
     # chack the whiptail exit status
     local status=$?

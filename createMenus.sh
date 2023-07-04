@@ -1,6 +1,7 @@
 #!/bin/bash
 source showMenu.sh 
-source ./generalConf/changeHostname.sh
+source ./generalConf/setHostname.sh
+source ./generalConf/setDns.sh
 
 # ============ OPTIONS =============
 
@@ -16,8 +17,8 @@ mainMenu_options=(
 # options: main menu > general config
 
 general_main_options=(
-    "Change Hostname" setHostname
-    "Change DNS" setDNS
+    "Change Hostname" change_hostname
+    "Change DNS" change_dns
     "Set IP" setIP
     "Add/Del Route" addDelroute
     "Back" back_func
@@ -77,18 +78,6 @@ firewall_conf_menu() { # main menu > firewall config (phase 1)
 }
 
 # actions: main menu > general configuration
-
-setHostname() {
-    changeHostname
-}
-
-setDNS() {
-    echo "dns..."
-}
-
-setIP() {
-    echo "ip..."	
-}
 
 addDelRoute() {
     echo "route..."

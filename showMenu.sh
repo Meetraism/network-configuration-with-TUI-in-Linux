@@ -32,7 +32,7 @@ show_msgbox() {
 }
 
 show_inputbox() {
-	local msgg=$1
-	local usr_input=$(whiptail --inputbox "$msgg" 10 40 "" 3>&1 1>&2 2>&3)
+	local msg=$1
+	local usr_input=$(whiptail --inputbox "$msg" 10 40 "" 3>&1 1>&2 2>&3)
     echo "$usr_input"
 }
