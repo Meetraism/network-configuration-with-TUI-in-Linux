@@ -1,16 +1,17 @@
 #!bin/bash
+#source ./generalConf/set_dns.sh
 
 # pattern of a valid ip 
 pattern="^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
 
 # validate ip
 validate_ip() {
-    local ip=$1	
-    if ! [[ $ip =~ $pattern ]] ; then # fixed: spaces needed around the operator!
-      show_msgbox "${dns_ip} is not valid!"
-      # exit 0
-      failed=1
-    fi
+  local ip=$1	
+  if ! [[ $ip =~ $pattern ]] ; then
+    show_msgbox "${dns_ip} is not valid!"
+    export FAILED=1
+    # exit 0
+  fi
 }
 
 # validate subnet
@@ -18,7 +19,6 @@ validate_subnet() {
     local subnet=$1 # X.X.X.X/subnet
     if ! [[ "$subnet" =~ ^[0-9]+$ && "$subnet" -le 32 ]]; then
         show_msgbox "Invalid subnet mask: $subnet";
-        failed=1
     fi
 }
 
@@ -26,12 +26,12 @@ validate_subnet() {
 # Test Reachablity 
 # Test if ip is a dns server ip
 is_dns_ip() {
-    local ip=$1	
-    if ! dig +short google.com @${dns_ip} &>/dev/null; then # fixed: Double quote to prevent word splitting.
-        show_msgbox "${dns_ip} is not a DNS server!"
-        failed=1
-        # exit 0
-    fi
+  local ip=$1	
+  if ! dig +short google.com @"${dns_ip}" &>/dev/null; then
+    show_msgbox "${dns_ip} is not a DNS server!"
+    export FAILED=1
+    # exit 0
+  fi
 }
 
 # Function to validate and correct the gateway IP address
