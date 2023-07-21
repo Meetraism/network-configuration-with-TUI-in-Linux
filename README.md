@@ -3,7 +3,7 @@ Note: This project is not complete.
 
 To run the Project: 
 1. Run initialize.sh
-2. 2.Run create_menus.sh
+2. Run create_menus.sh
 
 # Description: 
 
