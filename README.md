@@ -1,5 +1,5 @@
 # network_configuration_using TUI
-
+Note: This project is not complete.
 # Description: 
 
 In this project we provide a TUI interface for user to configure his/her own linux network configuration. I tried to make it convenient, flexible and easy to use for you as a network administrator!
